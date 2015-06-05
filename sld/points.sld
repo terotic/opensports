@@ -75,8 +75,7 @@ xlink:href="http://wiki.openstreetmap.org/w/images/thumb/9/9d/Swimming_blue.svg/
             </Graphic>
           </PointSymbolizer>
         </Rule>	    
-		  
-        </Rule>	  
+		   
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
