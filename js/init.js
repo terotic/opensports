@@ -117,6 +117,17 @@ function getNearestSports (argument) {
                 properties: properties,
                 feature: feature
             });
+
+            // Update debug dialog
+            var $div = $("#nearest-venues");
+
+            $div.html("");
+
+            for (i = 0; i < searchResults.length; i++) {
+                var html = searchResults[i].properties.tyyppi_nimi_en;
+                
+                $div.append("<div>" + html + "</div>");
+            }
         }
     });
 }
