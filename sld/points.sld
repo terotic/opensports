@@ -8,7 +8,7 @@
 
 
         <Rule>
-          <Name>3000 Water Sports Facilities</Name>
+          <!--Name>3000 Water Sports Facilities</Name>
           <Title>300</Title>
           <Abstract></Abstract>
       
@@ -43,7 +43,7 @@
                 <ogc:Literal>3240</ogc:Literal>
               </ogc:PropertyIsEqualTo>			  
             </ogc:Or>			  
-          </ogc:Filter> 
+          </ogc:Filter--> 
 
  <PointSymbolizer>
    <Graphic>
