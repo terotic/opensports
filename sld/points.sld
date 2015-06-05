@@ -5,7 +5,7 @@
     <Name>lipas:lipas_kaikki_pisteet</Name>
     <UserStyle>
       <FeatureTypeStyle>
-        <Rule>
+
 
         <Rule>
           <Name>3000 Water Sports Facilities</Name>
