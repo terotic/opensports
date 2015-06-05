@@ -58,17 +58,18 @@
    </Graphic>
  </PointSymbolizer-->		  
 		  
-          <PointSymbolizer>
-             <Graphic>
-               <Mark>
-                 <WellKnownName>ttf://Webdings#0x57</WellKnownName>
-                 <Fill>
-                   <CssParameter name="fill">#AAAAAA</CssParameter>
-                 </Fill>
-               </Mark>
-               <Size>16</Size>
-             </Graphic>
-          </PointSymbolizer>		  
+ <PointSymbolizer>
+     <Graphic>
+       <Mark>
+         <WellKnownName>ttf://Webdings#0x0064</WellKnownName>
+         <Fill>
+           <CssParameter name="fill">#AAAAAA</CssParameter>
+         </Fill>
+         <Stroke/>
+       </Mark>
+     <Size>16</Size>
+   </Graphic>
+ </PointSymbolizer>	  
 		  
         </Rule>	  
       </FeatureTypeStyle>
