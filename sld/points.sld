@@ -51,7 +51,7 @@
      <Mark>
        <WellKnownName>circle</WellKnownName>
        <Fill>
-         <CssParameter name="fill">#FF0000</CssParameter>
+         <CssParameter name="fill">#00ff00</CssParameter>
        </Fill>
      </Mark>
      <Size>6</Size>
