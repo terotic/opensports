@@ -2,14 +2,20 @@
 <html>
     <head>
         <title>Open Sports</title>
-        <!--
+
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
-        <script type="text/javascript" src="js/lib//OpenLayers.js"></script>
-        -->
+        <script type="text/javascript" src="js/lib/ol.js"></script>
     </head>
 
     <body>
-        <div id="map"></div>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/init.js"></script>
     </body>
 </html>
