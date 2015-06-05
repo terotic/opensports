@@ -14,31 +14,31 @@
           <ogc:Filter>
             <ogc:Or>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3110</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3120</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3130</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3210</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3220</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3230</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:PropertyName>'lipas:tyyppikoodi'</ogc:PropertyName>
                 <ogc:Literal>3240</ogc:Literal>
               </ogc:PropertyIsEqualTo>			  
             </ogc:Or>			  
