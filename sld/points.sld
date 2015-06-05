@@ -63,7 +63,7 @@
               <ExternalGraphic>
                 <OnlineResource
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple"
-xlink:href="http://wiki.openstreetmap.org/w/images/thumb/9/9d/Swimming_blue.svg/120px-Swimming_blue.svg.png"/>
+xlink:href="http://wiki.openstreetmap.org/w/images/9/9d/Swimming_blue.svg"/>
                 <Format>image/svg+xml</Format>
               </ExternalGraphic>
               <Size>
