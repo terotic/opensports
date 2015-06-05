@@ -7,12 +7,24 @@
       <FeatureTypeStyle>
 
         <Rule>
-          <Name>3230 Uimapaikka</Name>
-          <Title>3230 Uimapaikka</Title>
-          <Abstract>3230 Uimapaikka</Abstract>
+          <Name>3000 Water Sports Facilities</Name>
+          <Title>300</Title>
+          <Abstract></Abstract>
       
           <ogc:Filter>
             <ogc:Or>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:Literal>3110</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:Literal>3120</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
+                <ogc:Literal>3130</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
                 <ogc:Literal>3210</ogc:Literal>
@@ -29,6 +41,7 @@
                 <ogc:PropertyName>tyyppikoodi</ogc:PropertyName>
                 <ogc:Literal>3240</ogc:Literal>
               </ogc:PropertyIsEqualTo>			  
+            </ogc:Or>			  
           </ogc:Filter> 
 
           <PointSymbolizer>
