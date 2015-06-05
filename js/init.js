@@ -5,9 +5,9 @@ var map;
 xhr.open('GET', 'http://avoindata.maanmittauslaitos.fi/mapcache/wmts?service=wmts&request=getcapabilities&version=1.0.0', true);
 
 xhr.onload = function() {
-if (xhr.status == 200) {
-    init();
-}
+    if (xhr.status == 200) {
+        init();
+    }
 };
 xhr.send();
 
@@ -56,9 +56,15 @@ function init() {
                 })
               })
         ],
+        overlays: [OLPopups.getPopupOverlay()],
         target: 'map',
         view: view
     });
+
+    /**
+     * Add a click handler to the map to render the popup.
+     */
+    map.on('singleclick', OLPopups.showPopup);
 }
 
 
