@@ -12,7 +12,7 @@ html, body {
     padding: 0;
 }
 
-.ol-popup {
+.feature-popup {
     position: absolute;
     background-color: white;
     -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
@@ -23,7 +23,7 @@ html, body {
     bottom: 12px;
     left: -50px;
 }
-.ol-popup:after, .ol-popup:before {
+.feature-popup:after, .ol-popup:before {
     top: 100%;
     border: solid transparent;
     content: " ";
@@ -32,24 +32,38 @@ html, body {
     position: absolute;
     pointer-events: none;
 }
-.ol-popup:after {
+.feature-popup:after {
     border-top-color: white;
     border-width: 10px;
     left: 48px;
     margin-left: -10px;
 }
-.ol-popup:before {
+.feature-popup:before {
     border-top-color: #cccccc;
     border-width: 11px;
     left: 48px;
     margin-left: -11px;
 }
-.ol-popup-closer {
+.popup-closer {
     text-decoration: none;
     position: absolute;
     top: 2px;
     right: 8px;
+    color: #f00;
 }
-.ol-popup-closer:after {
+.popup-closer:after {
     content: "x";
+}
+
+.dialog-popup {
+    position: absolute;
+    background-color: navy;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 50%;
+    left: 50%;
+    color: #fff;
 }
