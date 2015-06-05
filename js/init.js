@@ -90,9 +90,14 @@ function getNearestSports (argument) {
                 continue;
 
             var coordinates = data.results[i].wkb_geometry.coordinates;
-            var feature = new ol.Feature({
-                geometry: new ol.geom.Point(ol.proj.transform(coordinates, 'EPSG:4326', 'EPSG:3067'))
-            });
+            var geometry =  new ol.geom.Point(ol.proj.transform(coordinates, 'EPSG:4326', 'EPSG:3067'));
+            var properties = { geometry: geometry };
+
+            for (var key in data.results[i]) {
+                properties[key] = data.results[i][key];
+            }
+
+            var feature = new ol.Feature(properties);
 
             source.addFeature(feature);
         }
