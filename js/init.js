@@ -1,5 +1,8 @@
 var map, featureLayer, searchResults;
 
+// Use this to filter venue types.  eg. [3240]
+var filterCategories = [];
+
 window.onload = function() {
 var xhr = new XMLHttpRequest();
 
@@ -79,8 +82,12 @@ function init() {
 
 function getNearestSports (argument) {
     var center = ol.proj.transform(map.getView().getCenter(), 'EPSG:3067', 'EPSG:4326');
+    var url = 'http://api.hel.fi/lipas/v1/venue/?format=json&lat=' + center[1] + '&lon=' + center[0];
 
-    $.get('http://api.hel.fi/lipas/v1/venue/?format=json&lat=' + center[1] + '&lon=' + center[0], function (data) {
+    if (filterCategories.length > 0)
+        url = url + "&type=" + filterCategories.toString();
+
+    $.get(url, function (data) {
         var source = featureLayer.getSource();
 
         // Remove old features from map
@@ -90,6 +97,7 @@ function getNearestSports (argument) {
         for (var i = 0; i < data.results.length; i++) {
             var geometry;
             
+            // Only support for points now
             if (data.results[i].wkb_geometry.type != 'Point')
                 continue;
 
