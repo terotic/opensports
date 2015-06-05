@@ -11,7 +11,7 @@
           <Title>300</Title>
           <Abstract></Abstract>
       
-          <ogc:Filter>
+          <!--ogc:Filter>
             <ogc:Or>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>'tyyppikoodi'</ogc:PropertyName>
@@ -42,7 +42,7 @@
                 <ogc:Literal>3240</ogc:Literal>
               </ogc:PropertyIsEqualTo>			  
             </ogc:Or>			  
-          </ogc:Filter> 
+          </ogc:Filter--> 
 
           <PointSymbolizer>
              <Graphic>
