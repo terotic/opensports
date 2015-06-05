@@ -1,6 +1,7 @@
+var map, featureLayer;
+
 window.onload = function() {
 var xhr = new XMLHttpRequest();
-var map;
 
 xhr.open('GET', 'http://avoindata.maanmittauslaitos.fi/mapcache/wmts?service=wmts&request=getcapabilities&version=1.0.0', true);
 
@@ -29,6 +30,10 @@ function init() {
     var parser = new ol.format.WMTSCapabilities();
     var capabilities = parser.read(xhr.responseXML);
 
+    featureLayer = new ol.layer.Vector({
+        source: new ol.source.Vector()
+    });
+
     map = new ol.Map({
         layers: [
             /*new ol.layer.Tile({
@@ -49,12 +54,14 @@ function init() {
             }),
             new ol.layer.Image({
                 extent: extent,
+                visible: false,
                 source: new ol.source.ImageWMS({
                   url: 'http://lipas.cc.jyu.fi/geoserver/lipas/wms?',
                   params: {'LAYERS': 'lipas_kaikki_kohteet'},
                   serverType: 'geoserver'
                 })
-              })
+              }),
+            featureLayer
         ],
         overlays: [OLPopups.getPopupOverlay()],
         target: 'map',
@@ -67,5 +74,27 @@ function init() {
     map.on('singleclick', OLPopups.showPopup);
 }
 
+getNearestSports();
 
 };
+
+function getNearestSports (argument) {
+    $.get('http://api.hel.fi/lipas/v1/venue/?format=json', function (data) {
+        var source = featureLayer.getSource();
+
+        // Remove old features from map
+        source.clear();
+
+        for (var i = 0; i < data.results.length; i++) {
+            if (data.results[i].wkb_geometry.type != 'Point')
+                continue;
+
+            var coordinates = data.results[i].wkb_geometry.coordinates;
+            var feature = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.transform(coordinates, 'EPSG:4326', 'EPSG:3067'))
+            });
+
+            source.addFeature(feature);
+        }
+    });
+}
