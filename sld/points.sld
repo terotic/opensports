@@ -46,7 +46,7 @@
             </ogc:Or>			  
           </ogc:Filter> 
 
- <!--PointSymbolizer>
+ <PointSymbolizer>
    <Graphic>
      <Mark>
        <WellKnownName>circle</WellKnownName>
@@ -56,7 +56,7 @@
      </Mark>
      <Size>6</Size>
    </Graphic>
- </PointSymbolizer-->		  
+ </PointSymbolizer>		  
 		  
           <PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre"> 
             <Graphic>
