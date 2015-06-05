@@ -1,68 +1,65 @@
 window.onload = function() {
-    /**
- * Elements that make up the popup.
- */
-var container = document.getElementById('popup');
-var content = document.getElementById('popup-content');
-var closer = document.getElementById('popup-closer');
+var xhr = new XMLHttpRequest();
+var map;
 
+xhr.open('GET', 'http://avoindata.maanmittauslaitos.fi/mapcache/wmts?service=wmts&request=getcapabilities&version=1.0.0', true);
 
-/**
- * Add a click handler to hide the popup.
- * @return {boolean} Don't follow the href.
- */
-closer.onclick = function() {
-  overlay.setPosition(undefined);
-  closer.blur();
-  return false;
+xhr.onload = function() {
+if (xhr.status == 200) {
+    init();
+}
 };
+xhr.send();
 
+function init() {
+    //Proj4 is required because OPenLayer 3 does not support EPSG:3067
+    //Config from http://epsg.io/3067
+    proj4.defs("EPSG:3067","+proj=utm +zone=35 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
 
-/**
- * Create an overlay to anchor the popup to the map.
- */
-var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-  element: container,
-  autoPan: true,
-  autoPanAnimation: {
-    duration: 250
-  }
-}));
+    //Map limits
+    var extent = [50199.4814, 6582464.0358, 761274.6247, 7799839.8902];
+    ol.proj.get('EPSG:3067').setExtent(extent);
 
+    var view = new ol.View({
+        center: [385703.6428654035, 6671882.4065274615],
+        projection: 'EPSG:3067',
+        zoom: 11
+    });
 
-/**
- * Create the map.
- */
-var map = new ol.Map({
-  layers: [
-    new ol.layer.Tile({
-      source: new ol.source.TileJSON({
-        url: 'http://api.tiles.mapbox.com/v3/' +
-            'mapbox.natural-earth-hypso-bathy.jsonp',
-        crossOrigin: 'anonymous'
-      })
-    })
-  ],
-  overlays: [overlay],
-  target: 'map',
-  view: new ol.View({
-    center: [0, 0],
-    zoom: 2
-  })
-});
+    var parser = new ol.format.WMTSCapabilities();
+    var capabilities = parser.read(xhr.responseXML);
 
+    map = new ol.Map({
+        layers: [
+            /*new ol.layer.Tile({
+                title: 'Maastokartta',
+                type: 'base',
+                visible: true,
+                source: new ol.source.WMTS(ol.source.WMTS.optionsFromCapabilities(capabilities, {
+                  layer: 'maastokartta'
+                }))
+            }), */
+            new ol.layer.Tile({
+                title: 'Taustakartta',
+                type: 'base',
+                visible: true,
+                source: new ol.source.WMTS(ol.source.WMTS.optionsFromCapabilities(capabilities, {
+                  layer: 'taustakartta'
+                }))
+            }),
+            new ol.layer.Image({
+                extent: extent,
+                source: new ol.source.ImageWMS({
+                  url: 'http://lipas.cc.jyu.fi/geoserver/lipas/wms?',
+                  params: {'LAYERS': 'lipas_kaikki_kohteet'},
+                  serverType: 'geoserver'
+                })
+              })
+        ],
+        target: 'map',
+        view: view
+    });
+}
 
-/**
- * Add a click handler to the map to render the popup.
- */
-map.on('singleclick', function(evt) {
-  var coordinate = evt.coordinate;
-  var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
-      coordinate, 'EPSG:3857', 'EPSG:4326'));
-
-  content.innerHTML = '<p>You clicked here:</p><code>' + hdms +
-      '</code>';
-  overlay.setPosition(coordinate);
-});
 
 };
