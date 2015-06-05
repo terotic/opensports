@@ -54,7 +54,7 @@ function init() {
             }),
             new ol.layer.Image({
                 extent: extent,
-                visible: false,
+                visible: true,
                 source: new ol.source.ImageWMS({
                   url: 'http://lipas.cc.jyu.fi/geoserver/lipas/wms?',
                   params: {'LAYERS': 'lipas_kaikki_kohteet'},
@@ -72,25 +72,29 @@ function init() {
      * Add a click handler to the map to render the popup.
      */
     map.on('singleclick', OLPopups.showPopup);
+    getNearestSports();
 }
-
-getNearestSports();
 
 };
 
 function getNearestSports (argument) {
-    $.get('http://api.hel.fi/lipas/v1/venue/?format=json', function (data) {
+    var center = ol.proj.transform(map.getView().getCenter(), 'EPSG:3067', 'EPSG:4326');
+
+    $.get('http://api.hel.fi/lipas/v1/venue/?format=json&lat=' + center[1] + '&lon=' + center[0], function (data) {
         var source = featureLayer.getSource();
 
         // Remove old features from map
         source.clear();
 
         for (var i = 0; i < data.results.length; i++) {
+            var geometry;
+            
             if (data.results[i].wkb_geometry.type != 'Point')
                 continue;
 
             var coordinates = data.results[i].wkb_geometry.coordinates;
-            var geometry =  new ol.geom.Point(ol.proj.transform(coordinates, 'EPSG:4326', 'EPSG:3067'));
+            geometry = new ol.geom.Point(ol.proj.transform(coordinates, 'EPSG:4326', 'EPSG:3067'));
+            
             var properties = { geometry: geometry };
 
             for (var key in data.results[i]) {
