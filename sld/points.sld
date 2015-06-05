@@ -46,7 +46,7 @@
             </ogc:Or>			  
           </ogc:Filter> 
 
- <!--PointSymbolizer>
+ <PointSymbolizer>
    <Graphic>
      <Mark>
        <WellKnownName>circle</WellKnownName>
@@ -56,22 +56,26 @@
      </Mark>
      <Size>6</Size>
    </Graphic>
- </PointSymbolizer-->		  
+ </PointSymbolizer>		  
 		  
- <PointSymbolizer>
-     <Graphic>
-       <Mark>
-         <WellKnownName>ttf://Webdings#0x0064</WellKnownName>
-         <Fill>
-           <CssParameter name="fill">#AAAAAA</CssParameter>
-         </Fill>
-         <Stroke/>
-       </Mark>
-     <Size>16</Size>
-   </Graphic>
- </PointSymbolizer>	  
-		  
-        </Rule>	  
+          <PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre"> 
+            <Graphic>
+              <ExternalGraphic>
+                <OnlineResource
+xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple"
+xlink:href="http://wiki.openstreetmap.org/w/images/thumb/9/9d/Swimming_blue.svg/120px-Swimming_blue.svg.png"/>
+                <Format>image/svg+xml</Format>
+              </ExternalGraphic>
+              <Size>
+                <ogc:Literal>22</ogc:Literal>
+              </Size>
+        
+
+        
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>	    
+		   
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
