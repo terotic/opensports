@@ -1,4 +1,4 @@
-var map, featureLayer;
+var map, featureLayer, searchResults;
 
 window.onload = function() {
 var xhr = new XMLHttpRequest();
@@ -85,6 +85,7 @@ function getNearestSports (argument) {
 
         // Remove old features from map
         source.clear();
+        searchResults = [];
 
         for (var i = 0; i < data.results.length; i++) {
             var geometry;
@@ -104,6 +105,10 @@ function getNearestSports (argument) {
             var feature = new ol.Feature(properties);
 
             source.addFeature(feature);
+            searchResults.push({
+                properties: properties,
+                feature: feature
+            });
         }
     });
 }
